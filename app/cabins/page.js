@@ -1,8 +1,7 @@
-import CabinCard from '@/app/_components/CabinCard';
-import { getCabins } from '../_lib/data-service';
 import { Suspense } from 'react';
 import CabinList from '../_components/CabinList';
 import Spinner from '../_components/Spinner';
+import Filter from '../_components/Filter';
 
 export const revalidate = 3600;
 
@@ -10,8 +9,10 @@ export const metadata = {
   title: 'Cabins',
 };
 
-export default async function Page() {
-  const cabins = await getCabins();
+export default function Page({ searchParams }) {
+  console.log(searchParams);
+
+  const filter = searchParams?.capacity ?? 'all';
 
   return (
     <div>
@@ -27,8 +28,12 @@ export default async function Page() {
         Welcome to paradise.
       </p>
 
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
+
+      <Suspense fallback={<Spinner />} key={filter}>
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
