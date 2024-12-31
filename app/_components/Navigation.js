@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { auth } from "../_lib/auth";
+import Link from 'next/link';
+import { auth } from '../_lib/auth';
 
 export default async function Navigation() {
   const session = await auth();
@@ -35,14 +35,14 @@ export default async function Navigation() {
                 alt={session.user.name}
                 referrerPolicy="no-referrer"
               />
-              <span>Guest area</span>
+              <span>Account</span>
             </Link>
           ) : (
             <Link
               href="/account"
               className="hover:text-accent-400 transition-colors"
             >
-              Guest area
+              Guest Area
             </Link>
           )}
         </li>
