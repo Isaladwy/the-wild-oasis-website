@@ -1,6 +1,6 @@
-import SubmitButton from '@/app/_components/SubmitButton';
-import { updateBooking } from '@/app/_lib/actions';
-import { getBooking, getCabin } from '@/app/_lib/data-service';
+import SubmitButton from "@/app/_components/SubmitButton";
+import { updateBooking } from "@/app/_lib/actions";
+import { getBooking, getCabin } from "@/app/_lib/data-service";
 
 export default async function Page({ params }) {
   const { bookingId } = params;
@@ -18,6 +18,7 @@ export default async function Page({ params }) {
         className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
       >
         <input type="hidden" value={bookingId} name="bookingId" />
+
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select
@@ -32,7 +33,7 @@ export default async function Page({ params }) {
             </option>
             {Array.from({ length: maxCapacity }, (_, i) => i + 1).map((x) => (
               <option value={x} key={x}>
-                {x} {x === 1 ? 'guest' : 'guests'}
+                {x} {x === 1 ? "guest" : "guests"}
               </option>
             ))}
           </select>
@@ -50,8 +51,8 @@ export default async function Page({ params }) {
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          <SubmitButton pendingLabel="Updating">
-            Update Reservation
+          <SubmitButton pendingLabel="Updating...">
+            Update reservation
           </SubmitButton>
         </div>
       </form>

@@ -1,13 +1,13 @@
-import { PencilSquareIcon } from '@heroicons/react/24/solid';
-import { format, formatDistance, isPast, isToday, parseISO } from 'date-fns';
-import DeleteReservation from './DeleteReservation';
-import Image from 'next/image';
-import Link from 'next/link';
+import Link from "next/link";
+import Image from "next/image";
+import { PencilSquareIcon } from "@heroicons/react/24/solid";
+import { format, formatDistance, isPast, isToday, parseISO } from "date-fns";
+import DeleteReservation from "./DeleteReservation";
 
 export const formatDistanceFromNow = (dateStr) =>
   formatDistance(parseISO(dateStr), new Date(), {
     addSuffix: true,
-  }).replace('about ', '');
+  }).replace("about ", "");
 
 function ReservationCard({ booking, onDelete }) {
   const {
@@ -28,8 +28,8 @@ function ReservationCard({ booking, onDelete }) {
       <div className="relative h-32 aspect-square">
         <Image
           src={image}
-          fill
           alt={`Cabin ${name}`}
+          fill
           className="object-cover border-r border-primary-800"
         />
       </div>
@@ -51,21 +51,21 @@ function ReservationCard({ booking, onDelete }) {
         </div>
 
         <p className="text-lg text-primary-300">
-          {format(new Date(startDate), 'EEE, MMM dd yyyy')} (
+          {format(new Date(startDate), "EEE, MMM dd yyyy")} (
           {isToday(new Date(startDate))
-            ? 'Today'
+            ? "Today"
             : formatDistanceFromNow(startDate)}
-          ) &mdash; {format(new Date(endDate), 'EEE, MMM dd yyyy')}
+          ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
 
         <div className="flex gap-5 mt-auto items-baseline">
           <p className="text-xl font-semibold text-accent-400">${totalPrice}</p>
           <p className="text-primary-300">&bull;</p>
           <p className="text-lg text-primary-300">
-            {numGuests} guest{numGuests > 1 && 's'}
+            {numGuests} guest{numGuests > 1 && "s"}
           </p>
           <p className="ml-auto text-sm text-primary-400">
-            Booked {format(new Date(created_at), 'EEE, MMM dd yyyy, p')}
+            Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
           </p>
         </div>
       </div>
@@ -80,7 +80,7 @@ function ReservationCard({ booking, onDelete }) {
               <PencilSquareIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors" />
               <span className="mt-1">Edit</span>
             </Link>
-            <DeleteReservation onDelete={onDelete} bookingId={id} />
+            <DeleteReservation bookingId={id} onDelete={onDelete} />
           </>
         ) : null}
       </div>

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { updateGuest } from '../_lib/actions';
-import SubmitButton from './SubmitButton';
+import { useState } from "react";
+import { updateGuest } from "../_lib/actions";
+import SubmitButton from "./SubmitButton";
 
-function UpdateProfileForm({ children, guest }) {
+function UpdateProfileForm({ guest, children }) {
   const [count, setCount] = useState();
 
   const { fullName, email, nationality, nationalID, countryFlag } = guest;
@@ -57,7 +57,7 @@ function UpdateProfileForm({ children, guest }) {
       </div>
 
       <div className="flex justify-end items-center gap-6">
-        <SubmitButton pendingLabel="Updating">Update Profile</SubmitButton>
+        <SubmitButton pendingLabel="Updating...">Update profile</SubmitButton>
       </div>
     </form>
   );

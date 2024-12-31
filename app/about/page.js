@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import image1 from '@/public/about-1.jpg';
-import image2 from '@/public/about-2.jpg';
-import { getCabins } from '../_lib/data-service';
+import Image from "next/image";
+import image1 from "@/public/about-1.jpg";
+import image2 from "@/public/about-2.jpg";
+import { getCabins } from "../_lib/data-service";
 
 export const revalidate = 86400;
 
 export const metadata = {
-  title: 'About',
+  title: "About",
 };
 
 export default async function Page() {
@@ -44,17 +44,17 @@ export default async function Page() {
       <div className="col-span-2">
         <Image
           src={image1}
+          alt="Family sitting around a fire pit in front of cabin"
           placeholder="blur"
           quality={80}
-          alt="Family sitting around a fire pit in front of cabin"
         />
       </div>
 
-      <div className="col-span-2">
+      <div className="relative aspect-square col-span-2">
         <Image
-          src={image2}
-          placeholder="blur"
-          quality={80}
+          src="/about-2.jpg"
+          fill
+          className="object-cover"
           alt="Family that manages The Wild Oasis"
         />
       </div>
